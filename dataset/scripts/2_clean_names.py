@@ -44,16 +44,16 @@ for root, dirs, files in os.walk("./../raw/1_first_imgs", topdown=False):
                 for img in images:
                     visited = []
                     img = os.path.join(subdir, img)
-                    if img not in visited:
-                        clean_name = img.split(' ')[-1]
+                    clean_name = img.split(' ')[-1]
+                    if clean_name not in visited:
                         dest_folder = os.path.join(output_dir, destination_foldername(folder))
 
                         if not os.path.exists(dest_folder):
                             os.makedirs(dest_folder)
 
                         outimg = os.path.join(dest_folder, clean_name)
-                        shutil.copy(img, dest_folder)
-                        visited.append(img)
+                        shutil.copy(img, outimg)
+                        visited.append(clean_name)
                     else:
                         pass
 
