@@ -28,7 +28,7 @@ def destination_foldername(folder):
         return "moped"
     elif "minivan" in folder:
         return "minivan"
-    
+
 
 for root, dirs, files in os.walk("./../raw/1_first_imgs", topdown=False):
     for name in set(dirs):
@@ -40,8 +40,6 @@ for root, dirs, files in os.walk("./../raw/1_first_imgs", topdown=False):
             # check the files in sub dirs inside.
             if len(subdir.split("/")) > 5:
                 folder = subdir.split("/")[-1].replace(' ','_')
-                
-                
 
                 for img in images:
                     visited = []
@@ -49,15 +47,15 @@ for root, dirs, files in os.walk("./../raw/1_first_imgs", topdown=False):
                     if img not in visited:
                         clean_name = img.split(' ')[-1]
                         dest_folder = os.path.join(output_dir, destination_foldername(folder))
-                        
+
                         if not os.path.exists(dest_folder):
                             os.makedirs(dest_folder)
-                
+
                         outimg = os.path.join(dest_folder, clean_name)
                         shutil.copy(img, dest_folder)
                         visited.append(img)
                     else:
                         pass
-                        
+
 
 
