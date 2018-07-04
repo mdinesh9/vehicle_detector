@@ -9,3 +9,5 @@
 ### Notes:
     - dataset/raw - folder not commited - contains raw images
     - dataset/scripts/chromedriver - removed chromedriver
+    - Delete invalid images
+        - python invalid_images.py --dataset=imgs_directory
