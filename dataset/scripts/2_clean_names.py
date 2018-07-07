@@ -16,7 +16,7 @@ def destination_foldername(folder):
         return "van"
     elif "suv" in folder:
         return "suv"
-    elif "motorbike" in folder:
+    elif any([name in folder for name in ["motorbike", "bike", "sports_bike"]]):
         return "motorbike"
     elif "ambulance" in folder:
         return "ambulance"
@@ -46,6 +46,7 @@ for root, dirs, files in os.walk("./../raw/1_first_imgs", topdown=False):
                     img = os.path.join(subdir, img)
                     clean_name = img.split(' ')[-1]
                     if clean_name not in visited:
+                        print(output_dir, folder)
                         dest_folder = os.path.join(output_dir, destination_foldername(folder))
 
                         if not os.path.exists(dest_folder):
